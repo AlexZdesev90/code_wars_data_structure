@@ -534,3 +534,109 @@ console.log(dupl("fefrrgt"))
 
 // Note:
 // If you are given an array with multiple answers, return the lowest correct index.
+
+function arr(arr) {
+  let right = [];
+  let left = [];
+  for (let i = 0; i < arr.length; i++){
+    let curr1 = arr[i]
+    for (let k = 0; k < arr.length; k++){
+      let curr2 = arr[k]
+      right.push(curr1)
+      left.push(curr2)
+    }
+  }
+}
+
+
+
+
+
+
+////////////////////
+//Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+// For example:
+
+// uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+// uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+// uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+
+function uniqueInOrder(str) {
+  let rrr = []
+  for (let i = 0; i < str.length; i++){
+    if (str[i] !== str[i + 1]) {
+      rrr.push(str[i])
+    }
+  }
+  return rrr
+  
+ 
+
+
+  // return Array.from(new Set(str.split('')))
+
+  // let arr = []
+  // for (let i = 0; i < str.length; i++){
+  //   for (let k = i+1; k < str.length; k++){
+  //     if () {
+        
+  //     }
+  //   }
+
+}
+
+console.log(uniqueInOrder('AAAABBBCCDAABBB'))
+
+
+
+
+function past(h, m, s){
+  return h * 3600000 + m * 60000 + s * 1000
+}
+
+console.log(past(0, 1, 1))
+
+  
+  
+// Build a pyramid-shaped tower given a positive integer number of floors. A tower block is represented with "*" character.
+
+// For example, a tower with 3 floors looks like this:
+
+// [
+//   "  *  ",
+//   " *** ", 
+//   "*****"
+// ]
+// And a tower with 6 floors looks like this:
+
+// [
+//   "     *     ", 
+//   "    ***    ", 
+//   "   *****   ", 
+//   "  *******  ", 
+//   " ********* ", 
+//   "***********"
+// ]
+
+function print(floors) {
+  let space, star, tower = []
+  for (let i = 1; i <= floors; i++){
+    space = ' '.repeat(floors - i);
+    star = '*'.repeat(2 * i - 1);
+    tower.push(`${space}${star}${space}`);
+  }
+  return tower;
+}
+
+console.log(print(3))
+
+
+
+  const descendingOrder = (n) => +(n.toString().split('').sort((a,b) => b - a).join(''))
+
+console.log(descendingOrder(123))
+
+
+
+
