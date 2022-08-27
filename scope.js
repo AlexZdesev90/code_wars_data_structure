@@ -159,94 +159,149 @@ function sequ(str) {
   if (str.length === 0) {
     return 0
   }
-  console.log(arr)//[1, 2, 3, 5]
-  let max = Math.max(...str);//5
-  let min = 1;
+  console.log(arr)//[1, 2, 4]
+  let max = Math.max(...arr);//5
+  let min = Math.min(...arr);
+  console.log(min)
   let res = [];
   while ( min <= max) {
     res.push(min);
     min += 1;
   }
-  console.log(res)//[1, 2, 3, 4, 5]
+  console.log(res)//[1, 2, 3, 4]
   for (let i = 0; i < arr.length; i++) {
     let current = arr[i]
-    if (isNaN(current)) {
+    console.log(typeof current)
+    if (typeof current === NaN) {
       return false
     }
-    if (arr[current]) {
-      res.splice(0, 1)
-      console.log(res)
+    if (res.includes(current) === false) {
+      return current
     }
-    if (!res[current]) {
-      return res[0]
+    if (res.includes(current)) {
+      res.splice(0, 1)
+      console.log(arr)
+    
     }
   }
   return false
 }
 
-console.log(sequ("1 2 4 5"))
+console.log(sequ("1 a 2 4"))
 
 
-function findMissingNumber(sequence){
-  let arr= sequence.split(" ").sort().map(Number);
-   if (arr.length === 0) {
-    return 0
+// function findMissingNumber(sequence){
+//   let arr= sequence.split(" ").sort().map(Number);
+//    if (arr.length === 0) {
+//     return 0
+//   }
+//   if(arr[0] !== "1") {
+//     return 1
+//     }
+//   let max = Math.max(...sequence);//5
+//   let min = 1;
+//   let res = [];
+//   while ( min <= max) {
+//     res.push(min);
+//     min += 1;
+//   }
+//   if (res.length === sequence.lenght) {
+//     return 0
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//     let current = arr[i]
+//     if (isNaN(current)) {
+//       return 1
+//     }
+//     if (arr[current]) {
+//       res.splice(0, 1)
+//     }
+//     if (!res[current]) {
+//       return res[0]
+//     }
+//   }
+// }
+
+
+// function ro(sequence){
+//   let arr= sequence.split(" ").sort().map(Number);
+//    if (arr.length === 0) {
+//     return 0
+//   }
+//   if(arr[0] !== "1") {
+//     return 1
+//     }
+//   let max = Math.max(...sequence);//5
+//   let min = 1;
+//   let res = [];
+//   while ( min <= max) {
+//     res.push(min);
+//     min += 1;
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//     let current = arr[i]
+//     if (isNaN(current)) {
+//       return 1
+//     }
+//     if (arr[current]) {
+//       res.splice(0, 1)
+//     }
+//     if (!res[current]) {
+//       return res[0]
+//     }
+//   }
+// }
+
+// console.log(ro("1 5"))
+
+
+
+////highAndLow("1 2 3 4 5");  // return "5 1"
+// highAndLow("1 2 -3 4 5"); // return "5 -3"
+// highAndLow("1 9 3 4 -5"); // return "9 -5"
+
+function highAndLow(str) {
+ let max = Math.max(...str.split(" "))
+  let min = Math.min(...str.split(" "))
+  return max + " " + min
+}
+console.log(highAndLow("1 9 3 4 -5")); // return "9 -5"
+
+
+var number = function(busStops){ //([[10,0],[3,5],[5,8]]),5
+  let count = 0;
+  for (let i = 0; i < busStops.length; i++){
+    let currentStop = busStops[i]
+    count += currentStop[0]
+    count -= currentStop[1]
   }
-  if(arr[0] !== "1") {
-    return 1
-    }
-  let max = Math.max(...sequence);//5
-  let min = 1;
-  let res = [];
-  while ( min <= max) {
-    res.push(min);
-    min += 1;
-  }
-  if (res.length === sequence.lenght) {
-    return 0
-  }
-  for (let i = 0; i < arr.length; i++) {
-    let current = arr[i]
-    if (isNaN(current)) {
-      return 1
-    }
-    if (arr[current]) {
-      res.splice(0, 1)
-    }
-    if (!res[current]) {
-      return res[0]
-    }
-  }
+  return count
 }
 
+// console.log(number([[3,0],[9,1],[4,8],[12,2],[6,1],[7,8]]))
 
-function ro(sequence){
-  let arr= sequence.split(" ").sort().map(Number);
-   if (arr.length === 0) {
-    return 0
-  }
-  if(arr[0] !== "1") {
-    return 1
-    }
-  let max = Math.max(...sequence);//5
-  let min = 1;
-  let res = [];
-  while ( min <= max) {
-    res.push(min);
-    min += 1;
-  }
-  for (let i = 0; i < arr.length; i++) {
-    let current = arr[i]
-    if (isNaN(current)) {
-      return 1
-    }
-    if (arr[current]) {
-      res.splice(0, 1)
-    }
-    if (!res[current]) {
-      return res[0]
+///
+function sumMix(x){
+  let res = 0;
+  for(let curr of x){
+    if(typeof curr === 'string'){
+      res += Number(curr)
+    }else{
+      res += curr
     }
   }
+  return res
 }
 
-console.log(ro("1 5"))
+const sumMixo = (xii) =>
+//   // let res = 0;
+//   // x.map(el => res += (typeof el === 'string') ? +el : el)
+//   // return res
+
+  xii.reduce((a,c)=>a+(+c),0)
+
+
+
+// const sumMMix = (arr) => arr.reduce((sum, n) => sum + (+n), 0);
+
+console.log(sumMixo([9, 3, '7', '3']))
