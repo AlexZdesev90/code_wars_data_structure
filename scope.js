@@ -155,41 +155,47 @@ stringer("abs")
 
 
 function sequ(str) {
-  let arr = str.split(" ").sort().map(Number);
-  if (str.length === 0) {
-    return 0
-  }
-  console.log(arr)//[1, 2, 4]
-  let max = Math.max(...arr);//5
-  let min = Math.min(...arr);
-  console.log(min)
-  let res = [];
-  while ( min <= max) {
-    res.push(min);
+  let real = str.split(" ").sort().map(Number);
+  // if (arr.length === 0) {
+  //   return 0
+  // }
+  console.log(real)//[1, 3]
+  // let rr = []
+  let max = Math.max(...real);//5
+  let min = Math.min(...real);
+  // console.log(min)
+  let create = [];
+  while (min <= max) {
+    create.push(min);
     min += 1;
   }
-  console.log(res)//[1, 2, 3, 4]
-  for (let i = 0; i < arr.length; i++) {
-    let current = arr[i]
-    console.log(typeof current)
-    if (typeof current === NaN) {
-      return false
+  console.log(create)//[1, 2, 3]
+  // // if (typeof current === NaN) {
+  //   //   return false
+  //   // }
+  for (let i = 0; i < create.length; i++) {
+    for (let k = 0; k < real.length; k++) {
+      if (real.includes(create[i]) === false) {
+        return create[i]
+      }
     }
-    if (res.includes(current) === false) {
-      return current
-    }
-    if (res.includes(current)) {
-      res.splice(0, 1)
-      console.log(arr)
-    
-    }
+
+
+
+
+    // for (let i = 0; i < one.length; i++){
+    //   for (let k = 0; k < two.length; k++){
+
+    //     if (!two.includes(one[i])) {
+    //         return one[i]
+    //       }
+    //   }
+    // }
   }
-  return false
 }
 
-console.log(sequ("1 a 2 4"))
 
-
+console.log(sequ("1 2 5 3"))
 // function findMissingNumber(sequence){
 //   let arr= sequence.split(" ").sort().map(Number);
 //    if (arr.length === 0) {
@@ -304,4 +310,4 @@ const sumMixo = (xii) =>
 
 // const sumMMix = (arr) => arr.reduce((sum, n) => sum + (+n), 0);
 
-console.log(sumMixo([9, 3, '7', '3']))
+// console.log(sumMixo([9, 3, '7', '3']))
