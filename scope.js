@@ -1079,3 +1079,24 @@ function readableFormat(seconds) {
 console.log(readableFormat(1));
 // console.log(new Array(5).fill([]))
 // console.log(2.435464.toFixed(0))
+
+function deleteNth(arr, n) {
+  let res = []
+    let obj = {}
+  for (let i = 0; i < arr.length; i++){
+    let current = arr[i];
+    if (obj[current]) {
+      obj[current]++
+    } else {
+      obj[current] = 1
+    }
+    if (obj[current] <= n) {
+      res.push(current)
+    } else {
+      continue
+    }
+  }
+  return res
+}
+
+console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))//[1, 1, 3, 3, 7, 2, 2, 2]
