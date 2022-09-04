@@ -1100,3 +1100,28 @@ function deleteNth(arr, n) {
 }
 
 console.log(deleteNth([1,1,3,3,7,2,2,2,2], 3))//[1, 1, 3, 3, 7, 2, 2, 2]
+
+
+function betterThanAverage(classPoints, yourPoints) {
+  return (yourPoints > classPoints.reduce((c, a) => c + a, 0) / classPoints.length)
+}
+console.log(betterThanAverage([12,34,56], 10))
+
+
+function deleteSecondElement(arr) {
+  //   let newArr = []
+  //   for (let i = 0; i < arr.length; i++){
+  //     if (!(i % 2)) {
+  //       newArr.push(arr[i])
+  //     }
+  //   }
+  //   return newArr
+  // }
+
+
+  return arr.filter((_, idx) => !(idx % 2))
+}
+  
+
+
+console.log(deleteSecondElement([12,56,13,87,14]))
