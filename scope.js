@@ -1125,3 +1125,14 @@ function deleteSecondElement(arr) {
 
 
 console.log(deleteSecondElement([12,56,13,87,14]))
+
+function sortByBit(arr) {
+
+    return arr.sort((a, b) =>
+        a.toString(2).replace(/0/g, "").length ===
+        b.toString(2).replace(/0/g, "").length ? a - b :
+        a.toString(2).replace(/0/g, "").length -
+        b.toString(2).replace(/0/g, "").length
+    );
+
+}
