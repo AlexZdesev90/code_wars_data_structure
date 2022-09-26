@@ -1136,3 +1136,76 @@ function sortByBit(arr) {
     );
 
 }
+
+
+
+function readableFormat(seconds) {
+    if (seconds === 0) {
+        return "now"
+    }
+    if (seconds === 1) {
+        return "1 second"
+    }
+    let res = [[], [], [], [], []];
+    let years = 0;
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let count = seconds;
+    if (seconds < 60) {
+        return seconds + " seconds";
+    }
+    if (seconds >= 31536000) {
+        years = Math.floor(seconds/31536000)
+        count -= years * 31536000;
+        let y = years > 1 ? years + " years" : years + " year";
+
+        res[0].push(y);
+        console.log
+    }
+    if (count >= 86400 && count < 31536000) {
+        // days = (count / 86400).toFixed(0);
+        days = Math.floor(count/86400);
+        count -= days * 86400;
+        let d = days > 1 ? days + " days" : years + " day";
+        res[1].push(d);
+    }
+    if (count >= 3600 && count < 86400) {
+        // hours = (count / 3600).toFixed(0);
+        hours = Math.floor(count/3600);
+        count -= hours * 3600;
+        let h = hours > 1 ? hours + " hours" : hours + " hour";
+        res[2].push(h);
+    }
+    if (count >= 60 && count < 3600) {
+        // minutes = (count / 60).toFixed(0);
+        minutes = Math.floor(count/60)
+        count -= minutes * 60;
+        let m = minutes > 1 ? minutes + " minutes" : minutes + " minute";
+        res[3].push(m);
+    }
+    if (count > 0) {
+        console.log(count);
+        let c = count > 1 ? count + " seconds" : count + " second";
+        res[4].push(c);
+    } else {
+        res[4].push()
+    }
+    console.log(res);
+    let result = "";
+    let newArr = res.filter((el) => el.length !== 0);
+
+    for (let i = 0; i < newArr.length; i++) {
+        let current = newArr[i];
+        if (current === newArr[0]) {
+            result += current;
+            continue;
+        }
+        if (current === newArr[newArr.length - 1]) {
+            result += " and " + current;
+            continue;
+        }
+        result += ", " + current;
+    }
+    return result;
+}
